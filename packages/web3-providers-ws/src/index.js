@@ -126,7 +126,7 @@ WebsocketProvider.prototype._onMessage = function (e) {
 
         // get the id which matches the returned id
         if (Array.isArray(result)) {
-            id = result[0].id;
+            id = helpers.sortPayload(result)[0].id;
         }
 
         if (_this.responseQueue.has(id)) {
@@ -353,7 +353,7 @@ WebsocketProvider.prototype.send = function (payload, callback) {
     var request = {payload: payload, callback: callback};
 
     if (Array.isArray(payload)) {
-        id = payload[0].id;
+        id = helpers.sortPayload(payload)[0].id;
     }
 
     if (this.connection.readyState === this.connection.CONNECTING || this.reconnecting) {

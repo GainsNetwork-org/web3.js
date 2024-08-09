@@ -27,5 +27,6 @@ if (isNode || isRN) {
 
 module.exports = {
     parseURL: helpers,
-    btoa: _btoa
+    btoa: _btoa,
+    sortPayload: (payload) => (payload|| []).sort((a, b) => a.id - b.id),
 };
